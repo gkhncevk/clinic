@@ -1,0 +1,849 @@
+{
+  "profile": {
+    "id": "amb_0142",
+    "fullName": "Amelia Hart",
+    "avatarUrl": "/mock/avatars/amelia.jpg",
+    "city": "Manchester",
+    "country": "GB",
+    "referralCode": "AMH4K2XQ",
+    "tier": "silver",
+    "tierProgress": {
+      "current": 7,
+      "nextTier": "gold",
+      "required": 10
+    },
+    "memberSince": "2026-03-14",
+    "primaryCategory": "dental",
+    "profileCompletion": 85
+  },
+  "summary": {
+    "readyToPay": {
+      "amount": 48600,
+      "currency": "GBP"
+    },
+    "pendingEarnings": {
+      "amount": 127400,
+      "currency": "GBP"
+    },
+    "paidToDate": {
+      "amount": 412500,
+      "currency": "GBP"
+    },
+    "referralsThisMonth": 18,
+    "referralsLastMonth": 12,
+    "conversionRate": 0.41,
+    "conversionRateLast90d": 0.37,
+    "nextPayoutDate": "2026-10-05",
+    "minimumPayout": {
+      "amount": 5000,
+      "currency": "GBP"
+    }
+  },
+  "referrals": [
+    {
+      "id": "ref_0001",
+      "publicRef": "R71033",
+      "leadName": "Nadia C.",
+      "clinicName": "Anadolu Plastic Surgery Center",
+      "category": "aesthetic",
+      "status": "disqualified",
+      "createdAt": "2026-09-21",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0002",
+      "publicRef": "R68535",
+      "leadName": "Grace H.",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "category": "dental",
+      "status": "settled",
+      "createdAt": "2026-06-20",
+      "leadFee": {
+        "amount": 3000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 24500,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0003",
+      "publicRef": "R30643",
+      "leadName": "James O.",
+      "clinicName": "Meridyen Hair Institute",
+      "category": "aesthetic",
+      "status": "treated",
+      "createdAt": "2026-06-07",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 31000,
+        "currency": "GBP"
+      },
+      "holdEndsAt": "2026-10-01",
+      "channel": "whatsapp"
+    },
+    {
+      "id": "ref_0004",
+      "publicRef": "R35601",
+      "leadName": "Hannah M.",
+      "clinicName": "Kalyon Dental Center",
+      "category": "aesthetic",
+      "status": "qualified",
+      "createdAt": "2026-06-22",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "whatsapp"
+    },
+    {
+      "id": "ref_0005",
+      "publicRef": "R82255",
+      "leadName": "Daniel A.",
+      "clinicName": "Optima Hair Clinic",
+      "category": "hair",
+      "status": "treated",
+      "createdAt": "2026-07-17",
+      "leadFee": {
+        "amount": 2500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 9800,
+        "currency": "GBP"
+      },
+      "holdEndsAt": "2026-10-03",
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0006",
+      "publicRef": "R24129",
+      "leadName": "Grace I.",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "category": "hair",
+      "status": "settled",
+      "createdAt": "2026-06-28",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 14200,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "tiktok"
+    },
+    {
+      "id": "ref_0007",
+      "publicRef": "R71602",
+      "leadName": "Zara I.",
+      "clinicName": "Marmara Hair Clinic",
+      "category": "dental",
+      "status": "cancelled",
+      "createdAt": "2026-06-19",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0008",
+      "publicRef": "R50790",
+      "leadName": "Elena W.",
+      "clinicName": "Marmara Hair Clinic",
+      "category": "dental",
+      "status": "qualified",
+      "createdAt": "2026-06-05",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0009",
+      "publicRef": "R70940",
+      "leadName": "Ben D.",
+      "clinicName": "Belmonte Oral Health Clinic",
+      "category": "dental",
+      "status": "disputed",
+      "createdAt": "2026-07-15",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0010",
+      "publicRef": "R27166",
+      "leadName": "Kieran I.",
+      "clinicName": "Vitalis Oral Health Clinic",
+      "category": "aesthetic",
+      "status": "contacted",
+      "createdAt": "2026-09-14",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "tiktok"
+    },
+    {
+      "id": "ref_0011",
+      "publicRef": "R49864",
+      "leadName": "James C.",
+      "clinicName": "Anadolu Plastic Surgery Center",
+      "category": "aesthetic",
+      "status": "expired",
+      "createdAt": "2026-09-28",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0012",
+      "publicRef": "R15519",
+      "leadName": "Omar C.",
+      "clinicName": "Hedera Cosmetic Clinic",
+      "category": "dental",
+      "status": "treated",
+      "createdAt": "2026-08-01",
+      "leadFee": {
+        "amount": 2500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 19800,
+        "currency": "GBP"
+      },
+      "holdEndsAt": "2026-10-13",
+      "channel": "instagram"
+    },
+    {
+      "id": "ref_0013",
+      "publicRef": "R86380",
+      "leadName": "Hannah W.",
+      "clinicName": "Vesta Hair Transplant Center",
+      "category": "dental",
+      "status": "contacted",
+      "createdAt": "2026-08-12",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0014",
+      "publicRef": "R73402",
+      "leadName": "Omar I.",
+      "clinicName": "Anadolu Plastic Surgery Center",
+      "category": "aesthetic",
+      "status": "disqualified",
+      "createdAt": "2026-07-10",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "tiktok"
+    },
+    {
+      "id": "ref_0015",
+      "publicRef": "R34877",
+      "leadName": "Leyla C.",
+      "clinicName": "Belmonte Oral Health Clinic",
+      "category": "dental",
+      "status": "settled",
+      "createdAt": "2026-09-16",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 24500,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "instagram"
+    },
+    {
+      "id": "ref_0016",
+      "publicRef": "R77155",
+      "leadName": "Yusuf W.",
+      "clinicName": "Cardea Aesthetic Clinic",
+      "category": "dental",
+      "status": "new",
+      "createdAt": "2026-09-09",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "whatsapp"
+    },
+    {
+      "id": "ref_0017",
+      "publicRef": "R74356",
+      "leadName": "Grace D.",
+      "clinicName": "Cardea Aesthetic Clinic",
+      "category": "aesthetic",
+      "status": "settled",
+      "createdAt": "2026-06-05",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 24500,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "facebook"
+    },
+    {
+      "id": "ref_0018",
+      "publicRef": "R90517",
+      "leadName": "Daniel A.",
+      "clinicName": "Lumina Oral Health Clinic",
+      "category": "aesthetic",
+      "status": "treated",
+      "createdAt": "2026-07-24",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 9800,
+        "currency": "GBP"
+      },
+      "holdEndsAt": "2026-10-09",
+      "channel": "whatsapp"
+    },
+    {
+      "id": "ref_0019",
+      "publicRef": "R16107",
+      "leadName": "Leyla M.",
+      "clinicName": "Renova Aesthetic Clinic",
+      "category": "dental",
+      "status": "disqualified",
+      "createdAt": "2026-07-03",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "youtube"
+    },
+    {
+      "id": "ref_0020",
+      "publicRef": "R53380",
+      "leadName": "Omar R.",
+      "clinicName": "Estetica Dental Clinic",
+      "category": "hair",
+      "status": "new",
+      "createdAt": "2026-09-12",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0021",
+      "publicRef": "R12786",
+      "leadName": "Daniel F.",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "category": "dental",
+      "status": "qualified",
+      "createdAt": "2026-08-11",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "instagram"
+    },
+    {
+      "id": "ref_0022",
+      "publicRef": "R58205",
+      "leadName": "Aisha H.",
+      "clinicName": "Optima Hair Clinic",
+      "category": "aesthetic",
+      "status": "new",
+      "createdAt": "2026-08-03",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0023",
+      "publicRef": "R64677",
+      "leadName": "James F.",
+      "clinicName": "Panorama Oral Health Clinic",
+      "category": "dental",
+      "status": "disqualified",
+      "createdAt": "2026-06-20",
+      "leadFee": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0024",
+      "publicRef": "R11631",
+      "leadName": "Daniel O.",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "category": "aesthetic",
+      "status": "qualified",
+      "createdAt": "2026-06-09",
+      "leadFee": {
+        "amount": 3000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "offline"
+    },
+    {
+      "id": "ref_0025",
+      "publicRef": "R86146",
+      "leadName": "Nadia K.",
+      "clinicName": "Hedera Cosmetic Clinic",
+      "category": "aesthetic",
+      "status": "qualified",
+      "createdAt": "2026-06-17",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "youtube"
+    },
+    {
+      "id": "ref_0026",
+      "publicRef": "R12921",
+      "leadName": "Hannah B.",
+      "clinicName": "Kalyon Dental Center",
+      "category": "hair",
+      "status": "booked",
+      "createdAt": "2026-09-09",
+      "leadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "youtube"
+    },
+    {
+      "id": "ref_0027",
+      "publicRef": "R90184",
+      "leadName": "Marcus D.",
+      "clinicName": "Optima Hair Clinic",
+      "category": "aesthetic",
+      "status": "qualified",
+      "createdAt": "2026-09-16",
+      "leadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "youtube"
+    },
+    {
+      "id": "ref_0028",
+      "publicRef": "R36018",
+      "leadName": "Kieran C.",
+      "clinicName": "Lumina Oral Health Clinic",
+      "category": "hair",
+      "status": "qualified",
+      "createdAt": "2026-09-08",
+      "leadFee": {
+        "amount": 2500,
+        "currency": "GBP"
+      },
+      "treatmentCommission": {
+        "amount": 0,
+        "currency": "GBP"
+      },
+      "holdEndsAt": null,
+      "channel": "tiktok"
+    }
+  ],
+  "links": [
+    {
+      "id": "lnk_001",
+      "slug": "amh4k2xq-608",
+      "label": "Salon QR card",
+      "clinicName": "Meridyen Hair Institute",
+      "channel": "offline",
+      "clickCount": 318,
+      "referralCount": 5,
+      "conversionRate": 0.0157,
+      "isActive": true,
+      "createdAt": "2026-05-09"
+    },
+    {
+      "id": "lnk_002",
+      "slug": "amh4k2xq-215",
+      "label": "YouTube description",
+      "clinicName": "Kalyon Dental Center",
+      "channel": "youtube",
+      "clickCount": 1723,
+      "referralCount": 6,
+      "conversionRate": 0.0035,
+      "isActive": true,
+      "createdAt": "2026-06-27"
+    },
+    {
+      "id": "lnk_003",
+      "slug": "amh4k2xq-740",
+      "label": "WhatsApp group",
+      "clinicName": "Kalyon Dental Center",
+      "channel": "offline",
+      "clickCount": 887,
+      "referralCount": 13,
+      "conversionRate": 0.0147,
+      "isActive": true,
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "lnk_004",
+      "slug": "amh4k2xq-563",
+      "label": "Salon QR card",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "channel": "instagram",
+      "clickCount": 1758,
+      "referralCount": 20,
+      "conversionRate": 0.0114,
+      "isActive": true,
+      "createdAt": "2026-07-28"
+    },
+    {
+      "id": "lnk_005",
+      "slug": "amh4k2xq-794",
+      "label": "Community event",
+      "clinicName": "Selena Cosmetic Clinic",
+      "channel": "facebook",
+      "clickCount": 1284,
+      "referralCount": 2,
+      "conversionRate": 0.0016,
+      "isActive": true,
+      "createdAt": "2026-07-10"
+    },
+    {
+      "id": "lnk_006",
+      "slug": "amh4k2xq-119",
+      "label": "Community event",
+      "clinicName": "Bosphorus Hair Institute",
+      "channel": "whatsapp",
+      "clickCount": 1369,
+      "referralCount": 19,
+      "conversionRate": 0.0139,
+      "isActive": false,
+      "createdAt": "2026-08-07"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "lst_001",
+      "title": "Implant patients from the UK",
+      "clinicName": "Estetica Dental Clinic",
+      "category": "hair",
+      "city": "İzmir",
+      "qualifiedLeadFee": {
+        "amount": 2000,
+        "currency": "GBP"
+      },
+      "commissionBps": 400,
+      "daysLeft": 43,
+      "slotsLeft": null,
+      "hasApplied": false
+    },
+    {
+      "id": "lst_002",
+      "title": "Rhinoplasty, London and Manchester",
+      "clinicName": "Meridyen Hair Institute",
+      "category": "dental",
+      "city": "Ankara",
+      "qualifiedLeadFee": {
+        "amount": 2500,
+        "currency": "GBP"
+      },
+      "commissionBps": 400,
+      "daysLeft": 15,
+      "slotsLeft": 3,
+      "hasApplied": true
+    },
+    {
+      "id": "lst_003",
+      "title": "Rhinoplasty, London and Manchester",
+      "clinicName": "Novadent Plastic Surgery Center",
+      "category": "hair",
+      "city": "İzmir",
+      "qualifiedLeadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "commissionBps": 700,
+      "daysLeft": 37,
+      "slotsLeft": null,
+      "hasApplied": false
+    },
+    {
+      "id": "lst_004",
+      "title": "FUE hair transplant, autumn campaign",
+      "clinicName": "Vitalis Oral Health Clinic",
+      "category": "dental",
+      "city": "Antalya",
+      "qualifiedLeadFee": {
+        "amount": 2500,
+        "currency": "GBP"
+      },
+      "commissionBps": 800,
+      "daysLeft": 36,
+      "slotsLeft": 3,
+      "hasApplied": true
+    },
+    {
+      "id": "lst_005",
+      "title": "Rhinoplasty, London and Manchester",
+      "clinicName": "Bosphorus Hair Institute",
+      "category": "aesthetic",
+      "city": "İzmir",
+      "qualifiedLeadFee": {
+        "amount": 1500,
+        "currency": "GBP"
+      },
+      "commissionBps": 700,
+      "daysLeft": 27,
+      "slotsLeft": 3,
+      "hasApplied": false
+    }
+  ],
+  "clickSeries": [
+    {
+      "date": "2026-08-20",
+      "clicks": 65
+    },
+    {
+      "date": "2026-08-21",
+      "clicks": 66
+    },
+    {
+      "date": "2026-08-22",
+      "clicks": 33
+    },
+    {
+      "date": "2026-08-23",
+      "clicks": 8
+    },
+    {
+      "date": "2026-08-24",
+      "clicks": 56
+    },
+    {
+      "date": "2026-08-25",
+      "clicks": 72
+    },
+    {
+      "date": "2026-08-26",
+      "clicks": 51
+    },
+    {
+      "date": "2026-08-27",
+      "clicks": 67
+    },
+    {
+      "date": "2026-08-28",
+      "clicks": 49
+    },
+    {
+      "date": "2026-08-29",
+      "clicks": 34
+    },
+    {
+      "date": "2026-08-30",
+      "clicks": 20
+    },
+    {
+      "date": "2026-08-31",
+      "clicks": 23
+    },
+    {
+      "date": "2026-09-01",
+      "clicks": 39
+    },
+    {
+      "date": "2026-09-02",
+      "clicks": 43
+    },
+    {
+      "date": "2026-09-03",
+      "clicks": 61
+    },
+    {
+      "date": "2026-09-04",
+      "clicks": 23
+    },
+    {
+      "date": "2026-09-05",
+      "clicks": 51
+    },
+    {
+      "date": "2026-09-06",
+      "clicks": 80
+    },
+    {
+      "date": "2026-09-07",
+      "clicks": 53
+    },
+    {
+      "date": "2026-09-08",
+      "clicks": 45
+    },
+    {
+      "date": "2026-09-09",
+      "clicks": 14
+    },
+    {
+      "date": "2026-09-10",
+      "clicks": 56
+    },
+    {
+      "date": "2026-09-11",
+      "clicks": 76
+    },
+    {
+      "date": "2026-09-12",
+      "clicks": 22
+    },
+    {
+      "date": "2026-09-13",
+      "clicks": 16
+    },
+    {
+      "date": "2026-09-14",
+      "clicks": 68
+    },
+    {
+      "date": "2026-09-15",
+      "clicks": 55
+    },
+    {
+      "date": "2026-09-16",
+      "clicks": 82
+    },
+    {
+      "date": "2026-09-17",
+      "clicks": 65
+    },
+    {
+      "date": "2026-09-18",
+      "clicks": 47
+    }
+  ]
+}

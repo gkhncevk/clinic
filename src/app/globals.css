@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   Design tokens
+   Reference: docs/02-TASARIM-YONU.md
+   Light theme values follow the brief's measured reference palette.
+   Dark theme is designed as its own surface, not an inverted negative.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* --- Color: surfaces --- */
+  --bg: #ffffff;
+  --surface: #f7f9fc;
+  --surface-2: #eef2f8;
+  --border: #e2e8f1;
+  --border-strong: #c7d2e0;
+
+  /* --- Color: text --- */
+  --text: #0c1722;
+  --text-muted: #55677d;
+  --text-on-primary: #ffffff;
+
+  /* --- Color: brand + semantic --- */
+  --primary: #1557b0;
+  --primary-hover: #10458c;
+  --success: #10703f;
+  --success-bg: #e6f3ec;
+  --warning: #8a5a06;
+  --warning-bg: #fbf1de;
+  --danger: #b02620;
+  --danger-bg: #fbeaea;
+  --accent: #6e3fa3;
+  --accent-bg: #f1eaf9;
+
+  /* --- Radius --- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-hover: 150ms;
+  --duration-popover: 180ms;
+  --duration-sheet: 300ms;
+  --duration-view: 220ms;
+  --duration-theme: 200ms;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0e1520;
+  --surface: #151e2c;
+  --surface-2: #1c2738;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --text: #e8eef6;
+  --text-muted: #9aacc2;
+  --text-on-primary: #0b1420;
+
+  --primary: #6ba5f5;
+  --primary-hover: #8fbaf7;
+  --success: #4ed08a;
+  --success-bg: rgba(78, 208, 138, 0.12);
+  --warning: #e3b341;
+  --warning-bg: rgba(227, 179, 65, 0.12);
+  --danger: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.12);
+  --accent: #b79ae0;
+  --accent-bg: rgba(183, 154, 224, 0.14);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-text-on-primary: var(--text-on-primary);
+
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  /* "brand" is the single, scarcely-used accent color from
+     docs/02-TASARIM-YONU.md ("Yanına tek bir vurgu rengi koyabilirsiniz").
+     It is intentionally NOT wired to Tailwind's `accent` slot below —
+     that slot is shadcn's neutral hover surface and must stay neutral,
+     or every dropdown/menu hover would turn violet. */
+  --color-brand: var(--accent);
+  --color-brand-bg: var(--accent-bg);
+
+  /* shadcn/ui semantic aliases, mapped onto our own tokens so primitives
+     inherit the system instead of shipping their own default palette. */
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--text);
+  --color-primary-foreground: var(--text-on-primary);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--text);
+  --color-destructive: var(--danger);
+  --color-destructive-foreground: #ffffff;
+  --color-input: var(--border);
+  --color-ring: var(--primary);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+
+  /* Typography scale — 9 steps, size paired with a fixed line-height.
+     Body copy never drops below 16px; 12–14px is reserved for meta
+     text and table cells (docs/02-TASARIM-YONU.md). */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.875rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 2.875rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg text-text antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition:
+      background-color var(--duration-theme) var(--ease-standard),
+      color var(--duration-theme) var(--ease-standard);
+  }
+
+  /* Visible, designed focus ring everywhere — never outline:none. */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Tabular numerals wherever money or counts render. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--accent-bg);
+    color: var(--text);
+  }
+
+  /* Deterministic identity swatch for clinics/ambassadors with no image. */
+  .identity-swatch {
+    background: var(--identity-bg-light);
+    color: #ffffff;
+  }
+  .dark .identity-swatch {
+    background: var(--identity-bg-dark);
+  }
+
+  /* Content container width — docs/02-TASARIM-YONU.md specifies 1280–1440px. */
+  .page-container {
+    max-width: 1440px;
+  }
+
+  /* Subtle deterministic texture for identity swatches — replaces a
+     gray placeholder box where a real clinic cover photo would sit. */
+  .identity-pattern {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 2px,
+      transparent 2px,
+      transparent 12px
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
