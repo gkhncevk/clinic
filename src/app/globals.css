@@ -213,6 +213,46 @@
       transparent 12px
     );
   }
+
+  /* Light-to-dark sheen so a flat identity color reads as a surface with
+     depth rather than a solid block of paint. */
+  .identity-sheen {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(0, 0, 0, 0.16) 100%
+    );
+  }
+
+  /* Clinic card entrance — a brief, staggered rise, not a startup-style
+     fly-in. Skipped entirely under prefers-reduced-motion (see below). */
+  @keyframes card-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-card-in {
+    animation: card-rise var(--duration-view) var(--ease-standard) both;
+    animation-delay: var(--card-delay, 0ms);
+  }
+
+  @keyframes count-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .animate-count-in {
+    animation: count-fade 300ms var(--ease-standard) both;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

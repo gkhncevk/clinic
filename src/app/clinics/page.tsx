@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ClinicsExplorer } from "@/components/clinics/clinics-explorer"
+import { TrustStats } from "@/components/clinics/trust-stats"
 import { getClinics } from "@/data/get-clinics"
 
 export const metadata: Metadata = {
@@ -28,6 +29,8 @@ export default async function ClinicsPage() {
           before you talk to anyone.
         </p>
       </div>
+
+      <TrustStats clinics={clinics} />
 
       <ClinicsExplorer allClinics={clinics} />
     </main>

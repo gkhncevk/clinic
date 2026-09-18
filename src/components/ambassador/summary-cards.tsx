@@ -1,6 +1,9 @@
+"use client"
+
 import { ArrowDown, ArrowUp, Minus, type LucideIcon } from "lucide-react"
+import { AnimatedNumber } from "@/components/common/animated-number"
 import { formatDate } from "@/lib/format"
-import { formatMoney, formatPercent } from "@/lib/money"
+import { formatPence, formatPercent } from "@/lib/money"
 import { cn } from "@/lib/utils"
 import type { AmbassadorSummary } from "@/types/ambassador"
 
@@ -46,25 +49,29 @@ export function SummaryCards({ summary }: { summary: AmbassadorSummary }) {
     {
       key: "ready",
       label: "Ready to pay",
-      value: formatMoney(summary.readyToPay),
+      value: summary.readyToPay.amount,
+      format: formatPence,
       sub: `Next payout ${formatDate(summary.nextPayoutDate)}`,
     },
     {
       key: "pending",
       label: "Pending earnings",
-      value: formatMoney(summary.pendingEarnings),
+      value: summary.pendingEarnings.amount,
+      format: formatPence,
       sub: "Released after a 30-day hold period",
     },
     {
       key: "referrals",
       label: "Referrals this month",
-      value: String(summary.referralsThisMonth),
+      value: summary.referralsThisMonth,
+      format: (n: number) => String(Math.round(n)),
       trend: referralsTrend(summary.referralsThisMonth, summary.referralsLastMonth),
     },
     {
       key: "conversion",
       label: "Conversion rate",
-      value: formatPercent(summary.conversionRate),
+      value: summary.conversionRate,
+      format: (n: number) => formatPercent(n),
       trend: conversionTrend(summary.conversionRate, summary.conversionRateLast90d),
     },
   ] as const
@@ -74,7 +81,9 @@ export function SummaryCards({ summary }: { summary: AmbassadorSummary }) {
       {cards.map((card) => (
         <div key={card.key} className="flex flex-col gap-2 rounded-lg border border-border bg-surface p-4">
           <p className="text-sm font-medium text-text-muted">{card.label}</p>
-          <p className="tabular text-3xl font-semibold tracking-tight text-text">{card.value}</p>
+          <p className="tabular text-3xl font-semibold tracking-tight text-text">
+            <AnimatedNumber value={card.value} format={card.format} />
+          </p>
           {"trend" in card ? (
             <Delta trend={card.trend} />
           ) : (

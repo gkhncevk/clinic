@@ -25,8 +25,8 @@ export function SponsoredSection({
             : "flex flex-col gap-4"
         }
       >
-        {clinics.map((clinic) => (
-          <ClinicCard key={clinic.id} clinic={clinic} variant={view} />
+        {clinics.map((clinic, index) => (
+          <ClinicCard key={clinic.id} clinic={clinic} variant={view} enterIndex={index} />
         ))}
       </div>
     </section>

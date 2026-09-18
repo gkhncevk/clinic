@@ -1,5 +1,5 @@
 import { Award, Clock3, Globe2, MapPin, Scissors, ShieldCheck, Smile, Sparkles, Users } from "lucide-react"
-import type { ComponentType } from "react"
+import type { ComponentType, CSSProperties } from "react"
 import { identityColorStyle } from "@/lib/deterministic-color"
 import { formatHours, initials } from "@/lib/format"
 import { CATEGORY_LABEL } from "@/lib/labels"
@@ -16,16 +16,24 @@ const CATEGORY_ICON: Record<ClinicCategory, ComponentType<{ className?: string }
 type ClinicCardProps = {
   clinic: Clinic
   variant: ClinicViewMode
+  /** Position in the current page — drives a short staggered entrance. */
+  enterIndex?: number
 }
 
-export function ClinicCard({ clinic, variant }: ClinicCardProps) {
+export function ClinicCard({ clinic, variant, enterIndex }: ClinicCardProps) {
   const CategoryIcon = CATEGORY_ICON[clinic.category]
   const isSiteVisited = clinic.verificationLevel === "site_visited"
+  const enterStyle =
+    enterIndex != null
+      ? ({ "--card-delay": `${Math.min(enterIndex, 9) * 28}ms` } as CSSProperties)
+      : undefined
 
   return (
     <article
+      style={enterStyle}
       className={cn(
-        "group flex h-full overflow-hidden rounded-lg border border-border bg-surface transition-shadow duration-150",
+        "group flex h-full overflow-hidden rounded-lg border border-border bg-surface transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-md",
+        enterIndex != null && "animate-card-in",
         variant === "grid" ? "flex-col" : "flex-col sm:flex-row"
       )}
     >
@@ -33,11 +41,11 @@ export function ClinicCard({ clinic, variant }: ClinicCardProps) {
         aria-hidden="true"
         style={identityColorStyle(clinic.id)}
         className={cn(
-          "identity-swatch identity-pattern relative flex shrink-0 items-center justify-center overflow-hidden",
+          "identity-swatch identity-pattern identity-sheen relative flex shrink-0 items-center justify-center overflow-hidden",
           variant === "grid" ? "aspect-[16/9] w-full" : "aspect-[16/9] w-full sm:aspect-auto sm:w-48"
         )}
       >
-        <span className="text-4xl font-semibold tracking-tight text-white/90">
+        <span className="text-4xl font-semibold tracking-tight text-white/90 drop-shadow-sm">
           {initials(clinic.displayName)}
         </span>
 
@@ -67,7 +75,7 @@ export function ClinicCard({ clinic, variant }: ClinicCardProps) {
           {clinic.isFeatured ? (
             <span
               title="Editor's pick — not a paid placement"
-              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border-strong px-2 py-0.5 text-2xs font-medium text-text-muted"
+              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/30 bg-brand-bg px-2 py-0.5 text-2xs font-medium text-brand"
             >
               <Award className="size-3" aria-hidden="true" />
               Featured

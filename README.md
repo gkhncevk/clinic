@@ -84,9 +84,10 @@ component sets a one-off color, size or spacing value — see
 The brief's reference palette (`docs/02-TASARIM-YONU.md`) was already
 measured and AA/AAA-compliant, so I used it as the base rather than
 inventing a new blue for its own sake, and added one thing of my own: a
-single violet **brand accent**, used in exactly one place (the ambassador
-tier badge icon) — everywhere else stays on the blue/neutral/status
-palette, per the brief's "one accent, used sparingly" rule.
+single violet **brand accent**, used in exactly two places — the ambassador
+tier badge icon and the "Featured" clinic tag — everywhere else stays on
+the blue/neutral/status palette, per the brief's "one accent, used
+sparingly" rule.
 
 **Light theme**
 
@@ -242,6 +243,17 @@ specifically so that ticking a filter checkbox never triggers a Next.js
 navigation, which would re-run the mock delay and flash the loading
 skeleton on every click. Reload and back/forward both restore the exact
 filter state from the URL, as required.
+
+**A note on "calm" vs. "lifeless."** An early pass read as flat rather than
+restrained — same problem the brief warns against just from the other
+direction. The fix wasn't more color: it was a light-to-dark sheen on each
+identity swatch instead of a flat fill, a short staggered rise for cards on
+load (`docs/02-TASARIM-YONU.md`'s own suggestion, capped under 300ms total
+and skipped under `prefers-reduced-motion`), a one-time count-up on the
+ambassador summary numbers, and a small real-numbers stat strip under the
+`/clinics` hero. None of it touches the palette or adds a second accent
+color — it's the same "sakin" system with more conviction in its own
+typography and motion, not more decoration.
 
 ## How the two pages stay one system while looking different
 

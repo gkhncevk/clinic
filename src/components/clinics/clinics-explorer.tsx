@@ -189,8 +189,8 @@ export function ClinicsExplorer({ allClinics }: { allClinics: Clinic[] }) {
                 : "flex flex-col gap-4"
             }
           >
-            {pageItems.map((clinic) => (
-              <ClinicCard key={clinic.id} clinic={clinic} variant={filters.view} />
+            {pageItems.map((clinic, index) => (
+              <ClinicCard key={clinic.id} clinic={clinic} variant={filters.view} enterIndex={index} />
             ))}
           </div>
 
