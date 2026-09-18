@@ -105,7 +105,9 @@ sparingly" rule.
 | `--success` | `#10703F` | Positive status |
 | `--warning` | `#8A5A06` | Disputed status |
 | `--danger` | `#B02620` | Negative status |
-| `--brand` (accent) | `#6E3FA3` | Tier badge only |
+| `--brand` (accent) | `#6E3FA3` | Featured tag, tier badge |
+| `--nav-bg` | `#0B2447` | Nav bar fill (both themes) |
+| `--nav-text` | `#EAF1FB` | Nav text/icons |
 
 **Dark theme** — a separate design, not an inverted light theme. Ground is
 a dark navy-slate (`#0E1520`), never pure black; text is a cool off-white
@@ -127,7 +129,9 @@ light-mode tone verbatim.
 | `--success` | `#4ED08A` | Positive status |
 | `--warning` | `#E3B341` | Disputed status |
 | `--danger` | `#F87171` | Negative status |
-| `--brand` (accent) | `#B79AE0` | Tier badge only |
+| `--brand` (accent) | `#B79AE0` | Featured tag, tier badge |
+| `--nav-bg` | `#16345C` | Nav bar fill — lighter than page `--bg` so it still reads as a distinct bar |
+| `--nav-text` | `#EAF1FB` | Nav text/icons |
 
 ### Measured contrast ratios
 
@@ -142,11 +146,14 @@ All twelve pairs below clear AA; most clear AAA (7:1).
 | Success / background | 6.16:1 | 8.54:1 |
 | Danger / background | 6.68:1 | 6.05:1 |
 | Brand accent / background | 7.23:1 | 7.60:1 |
+| Nav text / nav bar | 15.46:1 | 12.50:1 |
+| Nav muted text / nav bar | 7.37:1 | 5.96:1 |
 
-The light-theme figures come from the brief's own pre-verified reference
-palette (`docs/02-TASARIM-YONU.md`), which I adopted unchanged for those
-six roles. The dark-theme figures and both brand-accent figures I computed
-myself (WCAG relative-luminance formula) since those are values I chose.
+The light-theme figures for the first six pairs come from the brief's own
+pre-verified reference palette (`docs/02-TASARIM-YONU.md`), which I adopted
+unchanged for those roles. Every other figure — both dark-theme columns,
+the brand accent, and both nav bar pairs — I computed myself (WCAG
+relative-luminance formula) since those are values I chose.
 Button fill contrast (white-on-primary / dark-text-on-primary) was checked
 separately and lands at 6.95:1 and 7.35:1 respectively.
 
@@ -254,6 +261,18 @@ ambassador summary numbers, and a small real-numbers stat strip under the
 `/clinics` hero. None of it touches the palette or adds a second accent
 color — it's the same "sakin" system with more conviction in its own
 typography and motion, not more decoration.
+
+**A second round: the white chrome itself read as empty**, separately from
+the card content — nav bar, page background, all plain white. Rather than
+add more colors (the reference that prompted this was a listings site with
+three different bright button colors in its nav — exactly the "startup
+estetiği" the brief names as the wrong direction), the nav bar became a
+single solid navy fill (`--nav-bg`, its own token, same blue family as
+`--primary`, not a new hue) with light text, and the `/clinics` hero got a
+soft one-hue gradient wash (`color-mix` from `--primary` into `--surface`)
+instead of a flat white band. Still one color family, still one accent —
+just more of it, presented with more confidence instead of spread thinner
+across more hues.
 
 ## How the two pages stay one system while looking different
 

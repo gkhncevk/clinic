@@ -36,6 +36,12 @@
   --accent: #6e3fa3;
   --accent-bg: #f1eaf9;
 
+  /* --- Nav bar (deep navy, single-hue "color presence" instead of white) --- */
+  --nav-bg: #0b2447;
+  --nav-text: #eaf1fb;
+  --nav-text-muted: #9fb4d9;
+  --nav-active-bg: rgba(255, 255, 255, 0.14);
+
   /* --- Radius --- */
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -75,6 +81,13 @@
   --danger-bg: rgba(248, 113, 113, 0.12);
   --accent: #b79ae0;
   --accent-bg: rgba(183, 154, 224, 0.14);
+
+  /* Lighter than the page background so the bar still reads as a distinct
+     colored surface, not just "more dark". */
+  --nav-bg: #16345c;
+  --nav-text: #eaf1fb;
+  --nav-text-muted: #9fb4d9;
+  --nav-active-bg: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {
@@ -104,6 +117,11 @@
      or every dropdown/menu hover would turn violet. */
   --color-brand: var(--accent);
   --color-brand-bg: var(--accent-bg);
+
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-text: var(--nav-text);
+  --color-nav-text-muted: var(--nav-text-muted);
+  --color-nav-active: var(--nav-active-bg);
 
   /* shadcn/ui semantic aliases, mapped onto our own tokens so primitives
      inherit the system instead of shipping their own default palette. */
@@ -178,6 +196,13 @@
     border-radius: var(--radius-sm);
   }
 
+  /* The nav bar is a dark navy fill in both themes — the default blue ring
+     would nearly disappear against it, so its focusable children get a
+     light ring instead. Higher specificity than the rule above. */
+  .nav-focusable:focus-visible {
+    outline-color: var(--nav-text);
+  }
+
   /* Tabular numerals wherever money or counts render. */
   .tabular {
     font-variant-numeric: tabular-nums;
@@ -200,6 +225,18 @@
   /* Content container width — docs/02-TASARIM-YONU.md specifies 1280–1440px. */
   .page-container {
     max-width: 1440px;
+  }
+
+  /* Clinics hero band — a soft single-hue wash, not a second accent color,
+     so the marketing page reads as more than a plain white page without
+     breaking the "one vivid element on screen" rule. */
+  .hero-panel {
+    background-image: linear-gradient(
+      160deg,
+      color-mix(in oklch, var(--primary) 12%, var(--surface)) 0%,
+      var(--surface) 55%,
+      var(--surface) 100%
+    );
   }
 
   /* Subtle deterministic texture for identity swatches — replaces a

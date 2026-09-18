@@ -18,21 +18,27 @@ export default async function ClinicsPage() {
   const clinics = await getClinics()
 
   return (
-    <main className="mx-auto flex w-full page-container flex-col gap-8 px-4 py-8 sm:px-5 lg:px-8">
-      <div className="max-w-2xl space-y-2">
-        <h1 className="font-serif text-4xl font-medium tracking-tight text-text sm:text-5xl">
-          Find a verified clinic in Turkey
-        </h1>
-        <p className="text-lg text-text-muted">
-          Every clinic on ynsocial is either document-verified or visited
-          on-site. Filter by city, treatment and language to compare options
-          before you talk to anyone.
-        </p>
+    <main className="flex w-full flex-col">
+      <div className="hero-panel border-b border-border">
+        <div className="mx-auto flex w-full page-container flex-col gap-6 px-4 py-10 sm:px-5 lg:px-8">
+          <div className="max-w-2xl space-y-2">
+            <h1 className="font-serif text-4xl font-medium tracking-tight text-text sm:text-5xl">
+              Find a verified clinic in Turkey
+            </h1>
+            <p className="text-lg text-text-muted">
+              Every clinic on ynsocial is either document-verified or visited
+              on-site. Filter by city, treatment and language to compare
+              options before you talk to anyone.
+            </p>
+          </div>
+
+          <TrustStats clinics={clinics} />
+        </div>
       </div>
 
-      <TrustStats clinics={clinics} />
-
-      <ClinicsExplorer allClinics={clinics} />
+      <div className="mx-auto flex w-full page-container flex-col gap-8 px-4 py-8 sm:px-5 lg:px-8">
+        <ClinicsExplorer allClinics={clinics} />
+      </div>
     </main>
   )
 }
