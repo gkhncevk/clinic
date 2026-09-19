@@ -129,37 +129,39 @@ export function ClinicsExplorer({ allClinics }: { allClinics: Clinic[] }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="relative w-full sm:max-w-sm">
-          <Search
-            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-muted"
-            aria-hidden="true"
-          />
-          <Input
-            value={searchDraft}
-            onChange={(event) => setSearchDraft(event.target.value)}
-            placeholder="Search by clinic, city or treatment"
-            className="h-10 pl-9"
-            aria-label="Search clinics"
-          />
-        </div>
+      <div className="sticky top-14 z-30 -mx-4 border-b border-border bg-bg/95 px-4 py-3 backdrop-blur sm:-mx-5 sm:px-5 lg:-mx-8 lg:px-8">
+        <div className="mx-auto flex w-full page-container flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="relative w-full sm:max-w-sm">
+            <Search
+              className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-text-muted"
+              aria-hidden="true"
+            />
+            <Input
+              value={searchDraft}
+              onChange={(event) => setSearchDraft(event.target.value)}
+              placeholder="Search by clinic, city or treatment"
+              className="h-10 pl-9"
+              aria-label="Search clinics"
+            />
+          </div>
 
-        <ClinicFiltersBar
-          facets={facets}
-          priceBounds={priceBounds}
-          filters={filters}
-          onChange={updateFilters}
-          className="hidden flex-wrap items-center gap-2 lg:flex"
-        />
-
-        <div className="lg:hidden">
-          <ClinicFilterDrawer
+          <ClinicFiltersBar
             facets={facets}
             priceBounds={priceBounds}
             filters={filters}
             onChange={updateFilters}
-            countResults={countResults}
+            className="hidden flex-wrap items-center gap-2 lg:flex"
           />
+
+          <div className="lg:hidden">
+            <ClinicFilterDrawer
+              facets={facets}
+              priceBounds={priceBounds}
+              filters={filters}
+              onChange={updateFilters}
+              countResults={countResults}
+            />
+          </div>
         </div>
       </div>
 

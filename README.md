@@ -259,7 +259,9 @@ The URL is still kept in sync — via the History API directly
 specifically so that ticking a filter checkbox never triggers a Next.js
 navigation, which would re-run the mock delay and flash the loading
 skeleton on every click. Reload and back/forward both restore the exact
-filter state from the URL, as required.
+filter state from the URL, as required. The search-and-filter row is also
+sticky just below the nav (`top-14`), so it stays reachable while scrolling
+a long result list instead of requiring a trip back to the top.
 
 **A note on "calm" vs. "lifeless."** An early pass read as flat rather than
 restrained — same problem the brief warns against just from the other

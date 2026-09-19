@@ -1,4 +1,7 @@
+"use client"
+
 import { Globe2, MapPinned, ShieldCheck, Stethoscope, type LucideIcon } from "lucide-react"
+import { AnimatedNumber } from "@/components/common/animated-number"
 import type { Clinic } from "@/types/clinic"
 
 /** Real, computed numbers as individual tiles — not decoration, not
@@ -22,13 +25,15 @@ export function TrustStats({ clinics }: { clinics: Clinic[] }) {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="flex items-center gap-3 rounded-lg border border-border bg-bg/70 px-3.5 py-3 backdrop-blur-sm"
+          className="flex items-center gap-3 rounded-lg border border-border bg-bg/70 px-3.5 py-3 backdrop-blur-sm transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-md"
         >
           <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
             <stat.icon className="size-4" aria-hidden="true" />
           </span>
           <div className="min-w-0">
-            <dd className="tabular text-xl font-semibold leading-tight text-text">{stat.value}</dd>
+            <dd className="tabular text-xl font-semibold leading-tight text-text">
+              <AnimatedNumber value={stat.value} format={(n) => String(Math.round(n))} />
+            </dd>
             <dt className="text-xs leading-tight text-text-muted">{stat.label}</dt>
           </div>
         </div>
