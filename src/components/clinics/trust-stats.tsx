@@ -1,26 +1,36 @@
+import { Globe2, MapPinned, ShieldCheck, Stethoscope, type LucideIcon } from "lucide-react"
 import type { Clinic } from "@/types/clinic"
 
-/** A small strip of real, computed numbers — not decoration, not invented
- *  stats (the platform explicitly has none). Gives the hero some weight
- *  without borrowing a rating system it doesn't have. */
+/** Real, computed numbers as individual tiles — not decoration, not
+ *  invented stats (the platform explicitly has none). Each one is its own
+ *  bordered card rather than a row split by dividers, so it holds up at
+ *  any width instead of wrapping into an orphaned, half-separated line. */
 export function TrustStats({ clinics }: { clinics: Clinic[] }) {
   const cities = new Set(clinics.map((c) => c.city)).size
   const languages = new Set(clinics.flatMap((c) => c.languages)).size
   const siteVisited = clinics.filter((c) => c.verificationLevel === "site_visited").length
 
-  const stats = [
-    { value: clinics.length, label: "Verified clinics" },
-    { value: cities, label: "Cities" },
-    { value: siteVisited, label: "Site-visited" },
-    { value: languages, label: "Languages spoken" },
+  const stats: { value: number; label: string; icon: LucideIcon }[] = [
+    { value: clinics.length, label: "Verified clinics", icon: Stethoscope },
+    { value: cities, label: "Cities", icon: MapPinned },
+    { value: siteVisited, label: "Site-visited", icon: ShieldCheck },
+    { value: languages, label: "Languages spoken", icon: Globe2 },
   ]
 
   return (
-    <dl className="flex flex-wrap gap-x-8 gap-y-3 divide-x divide-border">
+    <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       {stats.map((stat) => (
-        <div key={stat.label} className="pl-8 first:pl-0">
-          <dt className="text-sm text-text-muted">{stat.label}</dt>
-          <dd className="tabular text-2xl font-semibold tracking-tight text-text">{stat.value}</dd>
+        <div
+          key={stat.label}
+          className="flex items-center gap-3 rounded-lg border border-border bg-bg/70 px-3.5 py-3 backdrop-blur-sm"
+        >
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+            <stat.icon className="size-4" aria-hidden="true" />
+          </span>
+          <div className="min-w-0">
+            <dd className="tabular text-xl font-semibold leading-tight text-text">{stat.value}</dd>
+            <dt className="text-xs leading-tight text-text-muted">{stat.label}</dt>
+          </div>
         </div>
       ))}
     </dl>

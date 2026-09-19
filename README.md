@@ -281,12 +281,33 @@ matching against (BitPan, Furns) use a colored nav either; their premium
 feel comes entirely from photography, type and whitespace. I reverted the
 nav to its original white/blurred style and put the effort where it
 actually paid off: real photography on every clinic card (decision 3
-above) and a soft single-hue gradient wash on the `/clinics` hero
-(`color-mix` from `--primary` into `--surface`) instead of a flat white
-band. Net result: more color presence than the first pass, delivered by
-photography and one gradient rather than a colored chrome element — and a
-concrete example of a design call that looked reasonable on paper and
-didn't survive contact with a screenshot.
+above), a soft single-hue gradient wash on the `/clinics` hero (`color-mix`
+from `--primary` into `--surface`), and — the actual fix — a hero that
+finally *has* something in it (next paragraph). A concrete example of a
+design call that looked reasonable on paper and didn't survive contact
+with a screenshot.
+
+**A split hero instead of a text block on a gradient.** Even with the
+gradient wash, a headline and four stat numbers over empty space still
+read as thin. The `/clinics` hero is now two columns on desktop — copy and
+the trust-stat tiles on the left, a real photo filling the right half,
+matching the confident editorial layout of the references I was asked to
+match (BitPan, Furns: big photo, bold headline, generous whitespace) —
+and stacks to photo-below-copy on mobile rather than disappearing. The nav
+bar gained the same idea in miniature: a small colored logomark next to
+the wordmark, and the active link is marked with an underline in
+`--primary` instead of a filled pill, which reads as a deliberate,
+designed indicator rather than a flat color block sitting on the bar.
+
+**Stat tiles instead of a row split by dividers.** The four trust
+numbers under the hero used to be plain text separated by `divide-x`
+hairlines — on any width where they wrapped to a second line, the line
+that was supposed to separate two numbers ended up next to nothing,
+looking like a rendering bug rather than a design. Each stat is now its
+own bordered tile with an icon in a tinted `primary/10` chip, arranged in
+a proper 2×2 / 4-across grid — it survives wrapping at any width because
+each tile is a complete, self-contained unit instead of one item in a
+divided row.
 
 ## How the two pages stay one system while looking different
 
@@ -348,12 +369,13 @@ competing visually with the trust-first tone the brief asks for.
 
 ## Photo credits
 
-The 9 category photos in `public/images/clinics/` are from
+The 9 category photos in `public/images/clinics/` and the `/clinics` hero
+photo (`public/images/hero-clinics.jpg`) are from
 [Unsplash](https://unsplash.com), used under the
 [Unsplash License](https://unsplash.com/license) (free for commercial use,
-no permission or attribution required). They represent each treatment
-category generically, per decision 3 above — not the real premises of any
-listed clinic.
+no permission or attribution required). The category photos represent
+each treatment category generically, per decision 3 above — not the real
+premises of any listed clinic; the hero photo is editorial/decorative.
 
 ## Screenshots
 

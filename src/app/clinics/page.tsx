@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { ClinicsExplorer } from "@/components/clinics/clinics-explorer"
 import { TrustStats } from "@/components/clinics/trust-stats"
 import { getClinics } from "@/data/get-clinics"
@@ -20,19 +21,32 @@ export default async function ClinicsPage() {
   return (
     <main className="flex w-full flex-col">
       <div className="hero-panel border-b border-border">
-        <div className="mx-auto flex w-full page-container flex-col gap-6 px-4 py-10 sm:px-5 lg:px-8">
-          <div className="max-w-2xl space-y-2">
-            <h1 className="font-serif text-4xl font-medium tracking-tight text-text sm:text-5xl">
-              Find a verified clinic in Turkey
-            </h1>
-            <p className="text-lg text-text-muted">
-              Every clinic on ynsocial is either document-verified or visited
-              on-site. Filter by city, treatment and language to compare
-              options before you talk to anyone.
-            </p>
+        <div className="mx-auto grid w-full page-container grid-cols-1 items-center gap-8 px-4 py-10 sm:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:px-8 lg:py-14">
+          <div className="flex flex-col gap-6">
+            <div className="max-w-xl space-y-3">
+              <h1 className="font-serif text-4xl font-medium tracking-tight text-text sm:text-5xl">
+                Find a <em className="text-primary not-italic">verified</em> clinic in Turkey
+              </h1>
+              <p className="text-lg text-text-muted">
+                Every clinic on ynsocial is either document-verified or visited
+                on-site. Filter by city, treatment and language to compare
+                options before you talk to anyone.
+              </p>
+            </div>
+
+            <TrustStats clinics={clinics} />
           </div>
 
-          <TrustStats clinics={clinics} />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border shadow-sm lg:aspect-auto lg:h-full lg:min-h-80">
+            <Image
+              src="/images/hero-clinics.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
 
