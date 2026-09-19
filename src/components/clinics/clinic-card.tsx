@@ -1,7 +1,9 @@
 import { Award, Clock3, Globe2, MapPin, Scissors, ShieldCheck, Smile, Sparkles, Users } from "lucide-react"
-import type { ComponentType, CSSProperties } from "react"
+import Image from "next/image"
+import type { ComponentType, CSSProperties, ReactNode } from "react"
+import { clinicPhoto } from "@/lib/clinic-photo"
 import { identityColorStyle } from "@/lib/deterministic-color"
-import { formatHours, initials } from "@/lib/format"
+import { formatHours } from "@/lib/format"
 import { CATEGORY_LABEL } from "@/lib/labels"
 import { formatPriceRange } from "@/lib/money"
 import { cn } from "@/lib/utils"
@@ -11,6 +13,15 @@ const CATEGORY_ICON: Record<ClinicCategory, ComponentType<{ className?: string }
   dental: Smile,
   hair: Scissors,
   aesthetic: Sparkles,
+}
+
+function Pill({ icon: Icon, children }: { icon: ComponentType<{ className?: string }>; children: ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-xs text-text-muted">
+      <Icon className="size-3.5 shrink-0" aria-hidden="true" />
+      {children}
+    </span>
+  )
 }
 
 type ClinicCardProps = {
@@ -30,32 +41,34 @@ export function ClinicCard({ clinic, variant, enterIndex }: ClinicCardProps) {
 
   return (
     <article
-      style={enterStyle}
+      style={{ ...enterStyle, ...identityColorStyle(clinic.id) }}
       className={cn(
-        "group flex h-full overflow-hidden rounded-lg border border-border bg-surface transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-md",
+        "identity-accent-border group flex h-full overflow-hidden rounded-lg border border-l-4 border-border bg-surface transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-md",
         enterIndex != null && "animate-card-in",
         variant === "grid" ? "flex-col" : "flex-col sm:flex-row"
       )}
     >
       <div
-        aria-hidden="true"
-        style={identityColorStyle(clinic.id)}
         className={cn(
-          "identity-swatch identity-pattern identity-sheen relative flex shrink-0 items-center justify-center overflow-hidden",
-          variant === "grid" ? "aspect-[16/9] w-full" : "aspect-[16/9] w-full sm:aspect-auto sm:w-48"
+          "relative shrink-0 overflow-hidden bg-surface-2",
+          variant === "grid" ? "aspect-[16/9] w-full" : "aspect-[16/9] w-full sm:aspect-auto sm:w-56"
         )}
       >
-        <span className="text-4xl font-semibold tracking-tight text-white/90 drop-shadow-sm">
-          {initials(clinic.displayName)}
-        </span>
+        <Image
+          src={clinicPhoto(clinic)}
+          alt=""
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
 
-        <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/25 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+        <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-black/35 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
           <CategoryIcon className="size-3.5" aria-hidden="true" />
           {CATEGORY_LABEL[clinic.category]}
         </span>
 
         {clinic.isSponsored ? (
-          <span className="absolute right-3 top-3 rounded-full border border-white/40 bg-black/25 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <span className="absolute right-3 top-3 rounded-full border border-white/40 bg-black/35 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
             Sponsored
           </span>
         ) : null}
@@ -101,29 +114,22 @@ export function ClinicCard({ clinic, variant, enterIndex }: ClinicCardProps) {
           </div>
         ) : null}
 
-        <dl className="grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-text-muted sm:grid-cols-3">
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck
-              className={cn("size-4 shrink-0", isSiteVisited ? "text-success" : "text-primary")}
-              aria-hidden="true"
-            />
-            <span>{isSiteVisited ? "Site visited" : "Documents verified"}</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Users className="size-4 shrink-0" aria-hidden="true" />
+        <div className="flex flex-wrap gap-1.5">
+          <Pill icon={ShieldCheck}>
+            <span className={isSiteVisited ? "text-success" : undefined}>
+              {isSiteVisited ? "Site visited" : "Documents verified"}
+            </span>
+          </Pill>
+          <Pill icon={Users}>
             <span className="tabular">{clinic.completedReferrals}+ referrals</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Clock3 className="size-4 shrink-0" aria-hidden="true" />
-            <span>Replies in ~{formatHours(clinic.avgResponseHours)}</span>
-          </div>
+          </Pill>
+          <Pill icon={Clock3}>Replies in ~{formatHours(clinic.avgResponseHours)}</Pill>
           {variant === "list" ? (
-            <div className="flex items-center gap-1.5">
-              <Globe2 className="size-4 shrink-0" aria-hidden="true" />
-              <span className="truncate uppercase">{clinic.languages.join(" · ")}</span>
-            </div>
+            <Pill icon={Globe2}>
+              <span className="uppercase">{clinic.languages.join(" · ")}</span>
+            </Pill>
           ) : null}
-        </dl>
+        </div>
 
         <div className="mt-auto flex items-end justify-between gap-2 border-t border-border pt-3">
           <div>

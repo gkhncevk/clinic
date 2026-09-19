@@ -106,8 +106,6 @@ sparingly" rule.
 | `--warning` | `#8A5A06` | Disputed status |
 | `--danger` | `#B02620` | Negative status |
 | `--brand` (accent) | `#6E3FA3` | Featured tag, tier badge |
-| `--nav-bg` | `#0B2447` | Nav bar fill (both themes) |
-| `--nav-text` | `#EAF1FB` | Nav text/icons |
 
 **Dark theme** — a separate design, not an inverted light theme. Ground is
 a dark navy-slate (`#0E1520`), never pure black; text is a cool off-white
@@ -130,8 +128,6 @@ light-mode tone verbatim.
 | `--warning` | `#E3B341` | Disputed status |
 | `--danger` | `#F87171` | Negative status |
 | `--brand` (accent) | `#B79AE0` | Featured tag, tier badge |
-| `--nav-bg` | `#16345C` | Nav bar fill — lighter than page `--bg` so it still reads as a distinct bar |
-| `--nav-text` | `#EAF1FB` | Nav text/icons |
 
 ### Measured contrast ratios
 
@@ -146,14 +142,12 @@ All twelve pairs below clear AA; most clear AAA (7:1).
 | Success / background | 6.16:1 | 8.54:1 |
 | Danger / background | 6.68:1 | 6.05:1 |
 | Brand accent / background | 7.23:1 | 7.60:1 |
-| Nav text / nav bar | 15.46:1 | 12.50:1 |
-| Nav muted text / nav bar | 7.37:1 | 5.96:1 |
 
 The light-theme figures for the first six pairs come from the brief's own
 pre-verified reference palette (`docs/02-TASARIM-YONU.md`), which I adopted
-unchanged for those roles. Every other figure — both dark-theme columns,
-the brand accent, and both nav bar pairs — I computed myself (WCAG
-relative-luminance formula) since those are values I chose.
+unchanged for those roles. Every other figure — both dark-theme columns and
+the brand accent — I computed myself (WCAG relative-luminance formula)
+since those are values I chose.
 Button fill contrast (white-on-primary / dark-text-on-primary) was checked
 separately and lands at 6.95:1 and 7.35:1 respectively.
 
@@ -223,14 +217,30 @@ every clinic card leads with verification level, completed-referral count
 and average response time — real, non-fabricated numbers already in the
 data. No invented stats were added anywhere.
 
-**3. Deterministic identity color instead of a gray placeholder box.**
-`logoUrl`/`coverUrl`/`avatarUrl` point to files that don't exist. Rather
-than a gray box, every clinic and the ambassador profile gets a color +
-initials badge from a curated 8-swatch palette (`src/lib/deterministic-color.ts`),
-picked by a hash of the entity's `id` — the same clinic always renders the
-same color, in both themes, across reloads. It's not per-swatch
-WCAG-verified individually, but all eight were chosen in the same dark
-tonal range specifically so white text stays legible on every one.
+**3. Category photography instead of a gray placeholder box, with a
+deterministic accent to keep clinics distinguishable.** `logoUrl`/`coverUrl`/
+`avatarUrl` point to files that don't exist — deliberately, per
+`docs/04-VERI.md`. The brief's own suggested fixes include "a color system
+by category"; I extended that to photography instead of flat color: a
+small pool of three free-license photos per category (`public/images/clinics`,
+`src/lib/clinic-photo.ts`), assigned deterministically so a given clinic
+always shows the same photo. Photos represent the *category*, not that
+specific clinic's real premises — I'm not fabricating a building that
+doesn't exist, just choosing a systematic visual language, the same way a
+"color by category" system would be. Individual clinics still get their own
+persistent identity: a 4px accent stripe down the card's left edge, colored
+by the same hash-based 8-swatch palette used earlier for the ambassador
+avatar (`src/lib/deterministic-color.ts`), which has no photo option at all
+since it's a specific person, not a category.
+
+The photo-assignment hash needed a second pass: hashing the clinic `id`
+alone and taking it mod 3 produced a bad split (6 of 8 dental clinics
+landing on the same photo) because ids are sequential per category
+(`cl_001`, `cl_002`, …) and correlated badly with a modulus that small.
+Hashing `id + category` together and discarding the low 8 bits before the
+modulo fixed it to a near-even 3/2/3 split — worth knowing since it's the
+kind of bug that looks fine in code review and only shows up once you
+actually look at the rendered grid.
 
 **4. A four-family status system for 10 referral statuses**, not ten
 colors (`src/components/ambassador/status-badge.tsx`): neutral (`new`),
@@ -262,17 +272,21 @@ ambassador summary numbers, and a small real-numbers stat strip under the
 color — it's the same "sakin" system with more conviction in its own
 typography and motion, not more decoration.
 
-**A second round: the white chrome itself read as empty**, separately from
-the card content — nav bar, page background, all plain white. Rather than
-add more colors (the reference that prompted this was a listings site with
-three different bright button colors in its nav — exactly the "startup
-estetiği" the brief names as the wrong direction), the nav bar became a
-single solid navy fill (`--nav-bg`, its own token, same blue family as
-`--primary`, not a new hue) with light text, and the `/clinics` hero got a
-soft one-hue gradient wash (`color-mix` from `--primary` into `--surface`)
-instead of a flat white band. Still one color family, still one accent —
-just more of it, presented with more confidence instead of spread thinner
-across more hues.
+**A second round, and one reverted experiment.** The white chrome itself
+still read as empty separately from card content — nav bar, page
+background, all plain white. First attempt: a solid navy nav bar fill.
+It tested worse, not better — it read as a heavier, cheaper-looking bar
+sitting on top of the actual content, and none of the references I was
+matching against (BitPan, Furns) use a colored nav either; their premium
+feel comes entirely from photography, type and whitespace. I reverted the
+nav to its original white/blurred style and put the effort where it
+actually paid off: real photography on every clinic card (decision 3
+above) and a soft single-hue gradient wash on the `/clinics` hero
+(`color-mix` from `--primary` into `--surface`) instead of a flat white
+band. Net result: more color presence than the first pass, delivered by
+photography and one gradient rather than a colored chrome element — and a
+concrete example of a design call that looked reasonable on paper and
+didn't survive contact with a screenshot.
 
 ## How the two pages stay one system while looking different
 
@@ -331,6 +345,15 @@ competing visually with the trust-first tone the brief asks for.
   persistent sidebar. It reads cleaner at this filter count and matches
   the "modern, uncluttered" brief, but a sidebar would scale better if
   more filter dimensions were added later.
+
+## Photo credits
+
+The 9 category photos in `public/images/clinics/` are from
+[Unsplash](https://unsplash.com), used under the
+[Unsplash License](https://unsplash.com/license) (free for commercial use,
+no permission or attribution required). They represent each treatment
+category generically, per decision 3 above — not the real premises of any
+listed clinic.
 
 ## Screenshots
 

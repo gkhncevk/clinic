@@ -36,12 +36,6 @@
   --accent: #6e3fa3;
   --accent-bg: #f1eaf9;
 
-  /* --- Nav bar (deep navy, single-hue "color presence" instead of white) --- */
-  --nav-bg: #0b2447;
-  --nav-text: #eaf1fb;
-  --nav-text-muted: #9fb4d9;
-  --nav-active-bg: rgba(255, 255, 255, 0.14);
-
   /* --- Radius --- */
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -81,13 +75,6 @@
   --danger-bg: rgba(248, 113, 113, 0.12);
   --accent: #b79ae0;
   --accent-bg: rgba(183, 154, 224, 0.14);
-
-  /* Lighter than the page background so the bar still reads as a distinct
-     colored surface, not just "more dark". */
-  --nav-bg: #16345c;
-  --nav-text: #eaf1fb;
-  --nav-text-muted: #9fb4d9;
-  --nav-active-bg: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {
@@ -117,11 +104,6 @@
      or every dropdown/menu hover would turn violet. */
   --color-brand: var(--accent);
   --color-brand-bg: var(--accent-bg);
-
-  --color-nav-bg: var(--nav-bg);
-  --color-nav-text: var(--nav-text);
-  --color-nav-text-muted: var(--nav-text-muted);
-  --color-nav-active: var(--nav-active-bg);
 
   /* shadcn/ui semantic aliases, mapped onto our own tokens so primitives
      inherit the system instead of shipping their own default palette. */
@@ -196,13 +178,6 @@
     border-radius: var(--radius-sm);
   }
 
-  /* The nav bar is a dark navy fill in both themes — the default blue ring
-     would nearly disappear against it, so its focusable children get a
-     light ring instead. Higher specificity than the rule above. */
-  .nav-focusable:focus-visible {
-    outline-color: var(--nav-text);
-  }
-
   /* Tabular numerals wherever money or counts render. */
   .tabular {
     font-variant-numeric: tabular-nums;
@@ -213,7 +188,8 @@
     color: var(--text);
   }
 
-  /* Deterministic identity swatch for clinics/ambassadors with no image. */
+  /* Deterministic identity swatch for the ambassador avatar (no photo
+     available at all, unlike clinics which get category photography). */
   .identity-swatch {
     background: var(--identity-bg-light);
     color: #ffffff;
@@ -236,29 +212,6 @@
       color-mix(in oklch, var(--primary) 12%, var(--surface)) 0%,
       var(--surface) 55%,
       var(--surface) 100%
-    );
-  }
-
-  /* Subtle deterministic texture for identity swatches — replaces a
-     gray placeholder box where a real clinic cover photo would sit. */
-  .identity-pattern {
-    background-image: repeating-linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.08) 0px,
-      rgba(255, 255, 255, 0.08) 2px,
-      transparent 2px,
-      transparent 12px
-    );
-  }
-
-  /* Light-to-dark sheen so a flat identity color reads as a surface with
-     depth rather than a solid block of paint. */
-  .identity-sheen {
-    background-image: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.22) 0%,
-      rgba(255, 255, 255, 0) 45%,
-      rgba(0, 0, 0, 0.16) 100%
     );
   }
 
@@ -290,6 +243,16 @@
   .animate-count-in {
     animation: count-fade 300ms var(--ease-standard) both;
   }
+}
+
+/* Deliberately unlayered: Tailwind's `@layer base { * { border-color } }`
+   reset and any `border-{color}` utility both live in layers that would
+   otherwise beat a same-specificity rule scoped to just border-left. */
+.identity-accent-border {
+  border-left-color: var(--identity-bg-light);
+}
+.dark .identity-accent-border {
+  border-left-color: var(--identity-bg-dark);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,12 +14,9 @@ export function TopNav() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-40 bg-nav-bg">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
       <div className="mx-auto flex h-14 w-full page-container items-center justify-between px-4 sm:px-5 lg:px-8">
-        <Link
-          href="/clinics"
-          className="nav-focusable rounded-sm text-sm font-semibold tracking-tight text-nav-text"
-        >
+        <Link href="/clinics" className="text-sm font-semibold tracking-tight text-text">
           ynsocial
         </Link>
 
@@ -32,15 +29,15 @@ export function TopNav() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "nav-focusable rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-150",
-                  active ? "bg-nav-active text-nav-text" : "text-nav-text-muted hover:text-nav-text"
+                  "rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-150",
+                  active ? "bg-surface-2 text-text" : "text-text-muted hover:text-text"
                 )}
               >
                 {link.label}
               </Link>
             )
           })}
-          <ThemeToggle className="nav-focusable text-nav-text-muted hover:bg-nav-active hover:text-nav-text dark:hover:bg-nav-active" />
+          <ThemeToggle />
         </nav>
       </div>
     </header>
