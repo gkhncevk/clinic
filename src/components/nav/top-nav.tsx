@@ -14,7 +14,7 @@ export function TopNav() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border bg-surface-2">
       <div className="mx-auto flex h-14 w-full page-container items-center justify-between px-4 sm:px-5 lg:px-8">
         <Link href="/clinics" className="text-sm font-semibold tracking-tight text-text">
           ynsocial
@@ -30,7 +30,7 @@ export function TopNav() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "rounded-md px-3 py-1.5 text-sm font-medium transition-colors duration-150",
-                  active ? "bg-surface-2 text-text" : "text-text-muted hover:text-text"
+                  active ? "bg-bg text-text shadow-sm" : "text-text-muted hover:text-text"
                 )}
               >
                 {link.label}
