@@ -30,20 +30,27 @@ export function AmbassadorHeader({ profile }: { profile: AmbassadorProfile }) {
   }
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="hero-panel flex flex-col gap-4 rounded-xl px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-center gap-3">
         <IdentityAvatar seed={profile.id} name={profile.fullName} className="size-12 text-base" />
         <div>
-          <p className="text-sm text-text-muted">Welcome back,</p>
-          <h1 className="text-2xl font-semibold tracking-tight text-text">{firstName(profile.fullName)}</h1>
+          <p className="text-sm text-hero-text-muted">Welcome back,</p>
+          <h1 className="text-2xl font-semibold tracking-tight text-hero-text">
+            {firstName(profile.fullName)}
+          </h1>
         </div>
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="rounded-full bg-surface-2 px-3 py-1 text-sm font-medium text-text">
+        <span className="rounded-full bg-hero-tile px-3 py-1 text-sm font-medium text-hero-text">
           {TIER_LABEL[profile.tier] ?? profile.tier} tier
         </span>
-        <Button variant="outline" size="sm" className="gap-1.5 font-mono" onClick={copyCode}>
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-1.5 border-hero-tile-border bg-hero-tile font-mono text-hero-text hover:bg-hero-icon hover:text-hero-text"
+          onClick={copyCode}
+        >
           {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
           {profile.referralCode}
         </Button>

@@ -106,6 +106,9 @@ sparingly" rule.
 | `--warning` | `#8A5A06` | Disputed status |
 | `--danger` | `#B02620` | Negative status |
 | `--brand` (accent) | `#6E3FA3` | Featured tag, tier badge |
+| `--hero-bg` | `#1557B0` | Clinics hero band, ambassador greeting card |
+| `--hero-text` | `#FFFFFF` | Text/icons on the hero band |
+| `--hero-text-muted` | `#C9DCF5` | Secondary text on the hero band |
 
 **Dark theme** — a separate design, not an inverted light theme. Ground is
 a dark navy-slate (`#0E1520`), never pure black; text is a cool off-white
@@ -128,6 +131,9 @@ light-mode tone verbatim.
 | `--warning` | `#E3B341` | Disputed status |
 | `--danger` | `#F87171` | Negative status |
 | `--brand` (accent) | `#B79AE0` | Featured tag, tier badge |
+| `--hero-bg` | `#123A66` | Clinics hero band, ambassador greeting card |
+| `--hero-text` | `#E8EEF6` | Text/icons on the hero band |
+| `--hero-text-muted` | `#9AACC2` | Secondary text on the hero band |
 
 ### Measured contrast ratios
 
@@ -142,12 +148,14 @@ All twelve pairs below clear AA; most clear AAA (7:1).
 | Success / background | 6.16:1 | 8.54:1 |
 | Danger / background | 6.68:1 | 6.05:1 |
 | Brand accent / background | 7.23:1 | 7.60:1 |
+| Hero text / hero band | 6.95:1 | 9.87:1 |
+| Hero muted text / hero band | 4.98:1 | 4.97:1 |
 
 The light-theme figures for the first six pairs come from the brief's own
 pre-verified reference palette (`docs/02-TASARIM-YONU.md`), which I adopted
-unchanged for those roles. Every other figure — both dark-theme columns and
-the brand accent — I computed myself (WCAG relative-luminance formula)
-since those are values I chose.
+unchanged for those roles. Every other figure — both dark-theme columns,
+the brand accent, and the hero band — I computed myself (WCAG
+relative-luminance formula) since those are values I chose.
 Button fill contrast (white-on-primary / dark-text-on-primary) was checked
 separately and lands at 6.95:1 and 7.35:1 respectively.
 
@@ -306,10 +314,25 @@ numbers under the hero used to be plain text separated by `divide-x`
 hairlines — on any width where they wrapped to a second line, the line
 that was supposed to separate two numbers ended up next to nothing,
 looking like a rendering bug rather than a design. Each stat is now its
-own bordered tile with an icon in a tinted `primary/10` chip, arranged in
-a proper 2×2 / 4-across grid — it survives wrapping at any width because
-each tile is a complete, self-contained unit instead of one item in a
-divided row.
+own bordered tile with an icon chip, arranged in a proper 2×2 / 4-across
+grid — it survives wrapping at any width because each tile is a complete,
+self-contained unit instead of one item in a divided row.
+
+**The hero went from a wash to a solid fill.** Even split into two columns
+with a photo, a 12%-tint gradient still read as "a white page with a hint
+of blue" rather than a page with actual color in it — which was the
+direct, repeated piece of feedback on this project. The `/clinics` hero
+band (and a compact version of the `/ambassador` greeting card, for the
+same reason) now use `--hero-bg`, a full, solid fill in the same blue as
+`--primary` — not a new hue, just the existing one used at 100% instead of
+12%. Text on it goes to white/off-white (`--hero-text`), the trust tiles
+become translucent white chips instead of tinted-white-on-white, and the
+headline's emphasis switched from a color trick (which stops working the
+instant the background *is* that color) to italics — the same device the
+BitPan reference uses for its own emphasized words. This is the one
+department where I intentionally pushed past "restrained" toward "bold,"
+on direct request — still one hue, but at full strength and covering a
+large surface, rather than confined to small chips.
 
 ## How the two pages stay one system while looking different
 

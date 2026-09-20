@@ -36,6 +36,16 @@
   --accent: #6e3fa3;
   --accent-bg: #f1eaf9;
 
+  /* --- Hero band: a bold, full-color section (not chrome) — the "one
+     accent, used with conviction" surface. Same blue family as --primary,
+     not a new hue. --- */
+  --hero-bg: #1557b0;
+  --hero-text: #ffffff;
+  --hero-text-muted: #c9dcf5;
+  --hero-tile-bg: rgba(255, 255, 255, 0.1);
+  --hero-tile-border: rgba(255, 255, 255, 0.18);
+  --hero-icon-bg: rgba(255, 255, 255, 0.16);
+
   /* --- Radius --- */
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -75,6 +85,15 @@
   --danger-bg: rgba(248, 113, 113, 0.12);
   --accent: #b79ae0;
   --accent-bg: rgba(183, 154, 224, 0.14);
+
+  /* Richer and lighter than the page background so the hero still reads
+     as a deliberate colored section, not just "more dark". */
+  --hero-bg: #123a66;
+  --hero-text: #e8eef6;
+  --hero-text-muted: #9aacc2;
+  --hero-tile-bg: rgba(255, 255, 255, 0.07);
+  --hero-tile-border: rgba(255, 255, 255, 0.14);
+  --hero-icon-bg: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {
@@ -90,6 +109,13 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-text-on-primary: var(--text-on-primary);
+
+  --color-hero-bg: var(--hero-bg);
+  --color-hero-text: var(--hero-text);
+  --color-hero-text-muted: var(--hero-text-muted);
+  --color-hero-tile: var(--hero-tile-bg);
+  --color-hero-tile-border: var(--hero-tile-border);
+  --color-hero-icon: var(--hero-icon-bg);
 
   --color-success: var(--success);
   --color-success-bg: var(--success-bg);
@@ -178,6 +204,12 @@
     border-radius: var(--radius-sm);
   }
 
+  /* The hero band's background IS --primary, so the default ring would
+     vanish on it. More specific selector, no layer tricks needed. */
+  .hero-panel :focus-visible {
+    outline-color: var(--hero-text);
+  }
+
   /* Tabular numerals wherever money or counts render. */
   .tabular {
     font-variant-numeric: tabular-nums;
@@ -203,16 +235,11 @@
     max-width: 1440px;
   }
 
-  /* Clinics hero band — a soft single-hue wash, not a second accent color,
-     so the marketing page reads as more than a plain white page without
-     breaking the "one vivid element on screen" rule. */
+  /* Clinics hero band — a bold, full-color section in the same blue
+     family as --primary (not a second accent), so the marketing page
+     leads with real color instead of a white banner with a headline. */
   .hero-panel {
-    background-image: linear-gradient(
-      160deg,
-      color-mix(in oklch, var(--primary) 12%, var(--surface)) 0%,
-      var(--surface) 55%,
-      var(--surface) 100%
-    );
+    background: var(--hero-bg);
   }
 
   /* Clinic card entrance — a brief, staggered rise, not a startup-style

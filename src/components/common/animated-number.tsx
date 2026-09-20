@@ -46,7 +46,17 @@ export function AnimatedNumber({ value, format, durationMs = 700 }: AnimatedNumb
     }
 
     frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
+
+    // Safety net: browsers may throttle rAF to near-zero for backgrounded
+    // or unfocused tabs, which would otherwise leave the count stuck part
+    // way through indefinitely. Force the final value once the duration
+    // has elapsed regardless of how many rAF ticks actually ran.
+    const settle = setTimeout(() => setDisplay(value), durationMs + 50)
+
+    return () => {
+      cancelAnimationFrame(frame)
+      clearTimeout(settle)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
