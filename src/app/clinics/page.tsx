@@ -20,10 +20,24 @@ export default async function ClinicsPage() {
 
   return (
     <main className="flex w-full flex-col">
-      <div className="hero-panel">
-        <div className="mx-auto grid w-full page-container grid-cols-1 items-center gap-8 px-4 py-12 sm:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:px-8 lg:py-16">
-          <div className="flex flex-col gap-6">
-            <div className="max-w-xl space-y-3">
+      <div className="hero-panel relative overflow-hidden">
+        {/* Photo bleeds to the true edge of the section on desktop — a
+            floating rounded card here read as a widget, not a photo. */}
+        <div className="absolute inset-y-0 right-0 hidden w-[42%] lg:block">
+          <Image
+            src="/images/hero-clinics.jpg"
+            alt=""
+            fill
+            priority
+            sizes="42vw"
+            className="object-cover"
+          />
+          <div className="hero-photo-fade absolute inset-y-0 left-0 w-24" aria-hidden="true" />
+        </div>
+
+        <div className="relative mx-auto w-full page-container px-4 pb-8 pt-12 sm:px-5 sm:pb-10 lg:px-8 lg:py-20">
+          <div className="flex max-w-xl flex-col gap-6 lg:max-w-md">
+            <div className="space-y-3">
               <h1 className="font-serif text-4xl font-medium tracking-tight text-hero-text sm:text-5xl">
                 Find a <em className="font-serif italic text-hero-text">verified</em> clinic in
                 Turkey
@@ -37,17 +51,20 @@ export default async function ClinicsPage() {
 
             <TrustStats clinics={clinics} />
           </div>
+        </div>
 
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-hero-tile-border shadow-lg lg:aspect-auto lg:h-full lg:min-h-80">
-            <Image
-              src="/images/hero-clinics.jpg"
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+        {/* Mobile: the photo becomes a full-bleed strip below the copy
+            instead of disappearing. It's a direct child of the (unpadded)
+            hero-panel, so it already spans edge to edge with no margin
+            tricks — the padding lives on the copy container above it. */}
+        <div className="relative aspect-[16/10] w-full lg:hidden">
+          <Image
+            src="/images/hero-clinics.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
       </div>
 

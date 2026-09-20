@@ -242,6 +242,12 @@
     background: var(--hero-bg);
   }
 
+  /* Feathers the hard seam where the full-bleed hero photo meets the
+     solid color, instead of a plain vertical cut. */
+  .hero-photo-fade {
+    background: linear-gradient(to right, var(--hero-bg), transparent);
+  }
+
   /* Clinic card entrance — a brief, staggered rise, not a startup-style
      fly-in. Skipped entirely under prefers-reduced-motion (see below). */
   @keyframes card-rise {

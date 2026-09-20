@@ -334,6 +334,16 @@ department where I intentionally pushed past "restrained" toward "bold,"
 on direct request — still one hue, but at full strength and covering a
 large surface, rather than confined to small chips.
 
+First pass at this put the photo in a rounded, bordered box floating
+inside the blue — on review that read as a widget sitting on the section,
+not a photo *of* the section, which is exactly the "template" feel the
+brief warns against. The photo now bleeds to the true edge on desktop
+(absolutely positioned, no radius, no border, a left-edge gradient feathering
+it into `--hero-bg` instead of a hard seam) and becomes a full-width strip
+below the copy on mobile rather than disappearing. Small change, but it's
+the difference between "a photo was added" and "the section was designed
+around a photo."
+
 ## How the two pages stay one system while looking different
 
 `/clinics` is the marketing face: generous whitespace, a serif display
