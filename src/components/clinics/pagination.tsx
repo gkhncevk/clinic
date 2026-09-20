@@ -51,7 +51,7 @@ export function Pagination({ page, totalPages, onChange }: PaginationProps) {
             aria-current={entry === page ? "page" : undefined}
             onClick={() => onChange(entry)}
             className={cn(
-              "tabular flex size-8 items-center justify-center rounded-md text-sm font-medium",
+              "tabular flex size-11 items-center justify-center rounded-md text-sm font-medium transition-transform duration-150 active:scale-90 sm:size-8",
               entry === page
                 ? "bg-primary text-text-on-primary"
                 : "text-text hover:bg-surface-2"

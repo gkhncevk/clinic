@@ -43,7 +43,7 @@ export function ClinicCard({ clinic, variant, enterIndex }: ClinicCardProps) {
     <article
       style={{ ...enterStyle, ...identityColorStyle(clinic.id) }}
       className={cn(
-        "identity-accent-border group flex h-full overflow-hidden rounded-lg border border-l-4 border-border bg-surface transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-md",
+        "identity-accent-border group flex h-full overflow-hidden rounded-lg border border-l-4 border-border bg-surface transition-[transform,box-shadow] duration-150 hover:-translate-y-1 hover:shadow-md active:translate-y-0 active:scale-95 active:shadow-sm",
         enterIndex != null && "animate-card-in",
         variant === "grid" ? "flex-col" : "flex-col sm:flex-row"
       )}

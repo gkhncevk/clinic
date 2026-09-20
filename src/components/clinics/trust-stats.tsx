@@ -32,7 +32,7 @@ export function TrustStats({ clinics }: { clinics: Clinic[] }) {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="flex items-center gap-3 rounded-lg border border-hero-tile-border bg-hero-tile px-3.5 py-3 backdrop-blur-sm transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-lg"
+          className="flex items-center gap-3 rounded-lg border border-hero-tile-border bg-hero-tile px-3.5 py-3 backdrop-blur-sm transition-[transform,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-md active:scale-95"
         >
           <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-hero-icon text-hero-text">
             <stat.icon className="size-4" aria-hidden="true" />

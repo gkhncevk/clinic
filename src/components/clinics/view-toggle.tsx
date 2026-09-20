@@ -30,7 +30,7 @@ export function ViewToggle({
           aria-pressed={value === mode}
           onClick={() => onChange(mode)}
           className={cn(
-            "flex size-8 items-center justify-center rounded transition-colors duration-150",
+            "flex size-11 items-center justify-center rounded transition-[background-color,color,transform] duration-150 active:scale-90 sm:size-8",
             value === mode
               ? "bg-primary text-text-on-primary"
               : "text-text-muted hover:bg-surface-2 hover:text-text"

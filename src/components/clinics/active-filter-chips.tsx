@@ -77,7 +77,7 @@ export function ActiveFilterChips({ filters, priceBounds, onChange }: ActiveFilt
             type="button"
             onClick={chip.onRemove}
             aria-label={`Remove filter ${chip.label}`}
-            className="flex size-5 items-center justify-center rounded-full text-text-muted hover:bg-surface-2 hover:text-text"
+            className="-my-1.5 -mr-1 flex size-8 items-center justify-center rounded-full text-text-muted transition-transform duration-150 hover:bg-surface-2 hover:text-text active:scale-90"
           >
             <X className="size-3.5" aria-hidden="true" />
           </button>

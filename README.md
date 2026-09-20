@@ -413,6 +413,30 @@ competing visually with the trust-first tone the brief asks for.
   the "modern, uncluttered" brief, but a sidebar would scale better if
   more filter dimensions were added later.
 
+## A compliance pass against the brief's own checklist
+
+Before calling this done, I went back through `docs/02-TASARIM-YONU.md`'s
+mobile and accessibility tables line by line against the actual code,
+rather than trusting memory. Found and fixed:
+
+- **Touch targets under 44px.** The shared `Button` component's `sm`,
+  `default` and `icon`/`icon-sm` sizes were shadcn's stock 32–36px —
+  fine for a mouse, not for the "44×44px minimum" the brief states for
+  mobile. They now step up to 44px below the `sm` (640px) breakpoint and
+  back down to the tighter desktop scale above it, so phones get real
+  touch targets without bloating the desktop UI. Pagination's page-number
+  buttons and the grid/list view toggle (raw buttons, not using the shared
+  component) got the same treatment.
+- **No press feedback anywhere.** `active:scale-*` was in the design token
+  plan (docs/02, "dokunma geri bildirimi") but never actually wired up.
+  Added to the `Button` component (covers every button in the app in one
+  place), `ClinicCard`, and the hero's stat tiles.
+- **Three shadow levels in practice, not two.** `ClinicCard`'s hover used
+  `shadow-md`, the hero stat tiles' hover used `shadow-lg` — an
+  inconsistency, not a deliberate second tier. Both now use `shadow-md`;
+  `shadow-sm` stays reserved for static resting elevation (the nav bar,
+  the chart tooltip).
+
 ## Photo credits
 
 The 9 category photos in `public/images/clinics/` and the `/clinics` hero
