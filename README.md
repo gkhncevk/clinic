@@ -5,6 +5,8 @@ Two pages for a health-tourism referral marketplace, built to the brief in
 directory (`/clinics`) and a data-dense ambassador dashboard (`/ambassador`).
 Mock data only — no backend, no auth, no database.
 
+**Live preview:** [ynsocial-deneme-gorevi.vercel.app](https://ynsocial-deneme-gorevi.vercel.app)
+
 ## Setup
 
 ```bash
