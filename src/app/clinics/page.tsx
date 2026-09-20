@@ -22,22 +22,28 @@ export default async function ClinicsPage() {
     <main className="flex w-full flex-col">
       <div className="hero-panel relative overflow-hidden">
         {/* Photo bleeds to the true edge of the section on desktop — a
-            floating rounded card here read as a widget, not a photo. */}
-        <div className="absolute inset-y-0 right-0 hidden w-[42%] lg:block">
+            floating rounded card here read as a widget, not a photo.
+            Sized off the viewport (not the 1440px content container) so
+            it keeps reaching the real edge on ultra-wide screens too. */}
+        <div className="absolute inset-y-0 right-0 hidden w-[46vw] lg:block">
           <Image
             src="/images/hero-clinics.jpg"
             alt=""
             fill
             priority
-            sizes="42vw"
+            sizes="46vw"
             className="object-cover"
           />
           <div className="hero-photo-fade absolute inset-y-0 left-0 w-24" aria-hidden="true" />
         </div>
 
-        <div className="relative mx-auto w-full page-container px-4 pb-8 pt-12 sm:px-5 sm:pb-10 lg:px-8 lg:py-20">
-          <div className="flex max-w-xl flex-col gap-6 lg:max-w-md">
-            <div className="space-y-3">
+        {/* The text column reserves space matching the photo's own width
+            (not a fixed max-width) — at wide viewports a fixed cap here
+            was squeezing the 4-tile stat grid into ~450px and forcing
+            every label to wrap onto two lines. */}
+        <div className="relative mx-auto w-full page-container px-4 pb-8 pt-12 sm:px-5 sm:pb-10 lg:py-20 lg:pl-8 lg:pr-[48vw]">
+          <div className="flex flex-col gap-6">
+            <div className="max-w-xl space-y-3">
               <h1 className="font-serif text-4xl font-medium tracking-tight text-hero-text sm:text-5xl">
                 Find a <em className="font-serif italic text-hero-text">verified</em> clinic in
                 Turkey

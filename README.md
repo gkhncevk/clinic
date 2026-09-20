@@ -344,6 +344,17 @@ below the copy on mobile rather than disappearing. Small change, but it's
 the difference between "a photo was added" and "the section was designed
 around a photo."
 
+That full-bleed photo grew to 46% of the viewport width on request (up
+from 42%), which surfaced a real layout bug: the copy column next to it
+had a fixed `max-w-md`, so the 4-stat grid was squeezed into ~450px no
+matter how wide the screen got, and two of the four labels ("Verified
+clinics", "Languages spoken") wrapped onto a second line every time. The
+fix wasn't a wider cap — any 4-across row sharing space with a large photo
+runs out of room eventually. The stat grid is now a fixed 2×2 on every
+screen size, not 2×2-on-mobile-4-across-on-desktop, so each tile gets
+roughly double the width regardless of exactly how the hero's column
+split lands.
+
 ## How the two pages stay one system while looking different
 
 `/clinics` is the marketing face: generous whitespace, a serif display

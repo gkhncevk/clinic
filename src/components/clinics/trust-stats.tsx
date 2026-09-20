@@ -9,7 +9,12 @@ import type { Clinic } from "@/types/clinic"
  *  hero's solid-color background (translucent white tiles), since that's
  *  the only place this renders. Each stat is its own bordered unit rather
  *  than a row split by dividers, so it holds up at any width instead of
- *  wrapping into an orphaned, half-separated line. */
+ *  wrapping into an orphaned, half-separated line.
+ *
+ *  Always a 2×2 grid, even on desktop: the hero's copy column shares its
+ *  width with a large photo, so a 4-across row never has enough room for
+ *  "Verified clinics" or "Languages spoken" to sit on one line — 2×2 gives
+ *  every tile roughly double the width regardless of how that split lands. */
 export function TrustStats({ clinics }: { clinics: Clinic[] }) {
   const cities = new Set(clinics.map((c) => c.city)).size
   const languages = new Set(clinics.flatMap((c) => c.languages)).size
@@ -23,7 +28,7 @@ export function TrustStats({ clinics }: { clinics: Clinic[] }) {
   ]
 
   return (
-    <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <dl className="grid grid-cols-2 gap-3">
       {stats.map((stat) => (
         <div
           key={stat.label}
