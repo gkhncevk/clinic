@@ -9,11 +9,6 @@ type IdentityAvatarProps = {
   className?: string
 }
 
-/**
- * Deterministic initials badge used wherever a logo/cover/avatar file is
- * missing (every clinic and the ambassador profile — the mock data ships
- * URLs but no actual files). Same seed always renders the same swatch.
- */
 export function IdentityAvatar({ seed, name, shape = "circle", className }: IdentityAvatarProps) {
   return (
     <div

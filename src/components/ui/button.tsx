@@ -19,9 +19,6 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
       },
-      // Heights step down at `sm` (640px): 44px is the mobile touch-target
-      // floor from docs/02-TASARIM-YONU.md, but a mouse doesn't need it, so
-      // desktop keeps the tighter shadcn scale.
       size: {
         default: "h-11 px-4 py-2 has-[>svg]:px-3 sm:h-9",
         xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",

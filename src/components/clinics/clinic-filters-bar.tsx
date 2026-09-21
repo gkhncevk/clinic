@@ -20,8 +20,6 @@ type ClinicFiltersBarProps = {
   className?: string
 }
 
-/** Desktop filter row — one popover per dimension. Hidden below `lg`, where
- *  ClinicFilterDrawer takes over as the mobile bottom sheet. */
 export function ClinicFiltersBar({
   facets,
   priceBounds,

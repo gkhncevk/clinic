@@ -18,7 +18,7 @@ function LinkRow({ link }: { link: AmbassadorLink }) {
       setCopied(true)
       setTimeout(() => setCopied(false), 1800)
     } catch {
-      // Clipboard API unavailable — silently ignore, button label just won't confirm.
+      // ignore
     }
   }
 

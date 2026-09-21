@@ -92,8 +92,6 @@ export function filtersToSearchParams(filters: ClinicFilters): URLSearchParams {
 
 type FilterDimension = "cities" | "categories" | "verification" | "languages"
 
-/** Applies every filter dimension except the one given — used to compute
- *  facet counts that answer "how many results if I also picked this option". */
 function applyFilters(
   clinics: Clinic[],
   filters: ClinicFilters,
@@ -155,14 +153,7 @@ export function countByOption(
   return counts
 }
 
-/**
- * "Recommended" score: a weighted blend of trust signals, since the
- * platform intentionally has no ratings or reviews (docs/01-PROJE.md).
- * Verification level carries the most weight (40%) because it is the
- * strongest real trust signal, followed by completed referral volume
- * (35%, normalized against the visible set) and response speed (25%,
- * inverted — faster is better). Sponsorship never enters this formula.
- */
+// verification 40% + referral volume 35% + response speed 25%
 export function recommendedScore(clinic: Clinic, bounds: { maxReferrals: number; maxResponseHours: number }): number {
   const verificationScore = clinic.verificationLevel === "site_visited" ? 1 : 0.55
   const referralScore = bounds.maxReferrals > 0 ? clinic.completedReferrals / bounds.maxReferrals : 0

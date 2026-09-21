@@ -14,13 +14,6 @@ import {
 import { cn } from "@/lib/utils"
 import type { ReferralStatus } from "@/types/ambassador"
 
-/**
- * A single, deliberate system for all 10 referral statuses
- * (docs/01-PROJE.md) instead of 10 unrelated colors: four tone families —
- * neutral, info, a three-step positive progression, and two distinct
- * negative weights — each paired with its own icon so meaning never rests
- * on color alone.
- */
 const STATUS_CONFIG: Record<
   ReferralStatus,
   { label: string; icon: LucideIcon; className: string }

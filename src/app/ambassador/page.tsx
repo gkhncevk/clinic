@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   description: "Track referrals, earnings and active campaigns as a ynsocial ambassador.",
 }
 
-// See src/app/clinics/page.tsx — same reasoning for forcing dynamic rendering.
 export const dynamic = "force-dynamic"
 
 export default async function AmbassadorPage() {

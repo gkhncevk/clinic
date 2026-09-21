@@ -2,8 +2,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
 import type { ClinicViewMode } from "@/types/clinic"
 
-/** Mirrors ClinicCard's real dimensions so the layout never jumps once
- *  data resolves (docs/05-CLAUDE-ILE-CALISMA.md checklist). */
 export function ClinicCardSkeleton({ variant }: { variant: ClinicViewMode }) {
   return (
     <div

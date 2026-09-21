@@ -1,11 +1,5 @@
 import type { CSSProperties } from "react"
 
-/**
- * Deterministic identity color for entities with no real logo/avatar image
- * (clinics, ambassadors). Same id always resolves to the same swatch, in
- * both themes — a curated set, not raw hash-to-hue, so contrast with white
- * text stays predictable everywhere it is used.
- */
 const IDENTITY_SWATCHES: { light: string; dark: string }[] = [
   { light: "#1F5FA8", dark: "#2C4A73" }, // blue
   { light: "#0F7A63", dark: "#1E4F44" }, // teal
@@ -17,7 +11,6 @@ const IDENTITY_SWATCHES: { light: string; dark: string }[] = [
   { light: "#7A4A9E", dark: "#4F3468" }, // purple
 ]
 
-/** FNV-1a, good enough distribution for a handful of swatch buckets. */
 function hashString(value: string): number {
   let hash = 0x811c9dc5
   for (let i = 0; i < value.length; i++) {
@@ -32,7 +25,6 @@ export function identityColor(seed: string): { light: string; dark: string } {
   return IDENTITY_SWATCHES[index]!
 }
 
-/** CSS custom properties to spread onto an element's `style` prop. */
 export function identityColorStyle(seed: string): CSSProperties {
   const { light, dark } = identityColor(seed)
   return {

@@ -39,10 +39,6 @@ export function ClinicsExplorer({ allClinics }: { allClinics: Clinic[] }) {
   const [searchDraft, setSearchDraft] = useState("")
   const hasMounted = useRef(false)
 
-  // Read the initial filter state from the URL once on mount, then keep the
-  // URL in sync via the History API directly — filtering happens entirely
-  // client-side against data already fetched, so we never re-trigger a
-  // server round trip (and its mock-delay loading state) on every click.
   useEffect(() => {
     const initial = parseFilters(new URLSearchParams(window.location.search))
     setFilters(initial)
@@ -66,7 +62,6 @@ export function ClinicsExplorer({ allClinics }: { allClinics: Clinic[] }) {
     window.history.replaceState(null, "", url)
   }, [filters])
 
-  // Debounce the search box so every keystroke doesn't churn the URL.
   useEffect(() => {
     const handle = setTimeout(() => {
       setFilters((f) => (f.q === searchDraft ? f : { ...f, q: searchDraft, page: 1 }))

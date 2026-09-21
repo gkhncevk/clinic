@@ -10,9 +10,6 @@ export const metadata: Metadata = {
     "Browse dental, hair transplant and aesthetic clinics in Turkey, filtered by city, verification level, language and price.",
 }
 
-// Force per-request rendering so the mock network delay (and the loading
-// skeleton it exists to demonstrate) actually happens on every visit —
-// otherwise Next would statically render this once at build time.
 export const dynamic = "force-dynamic"
 
 export default async function ClinicsPage() {
