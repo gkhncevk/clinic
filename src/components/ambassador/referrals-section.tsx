@@ -43,7 +43,10 @@ export function ReferralsSection({ referrals }: { referrals: Referral[] }) {
   return (
     <section className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-lg font-semibold text-text">My referrals</h2>
+        <div>
+          <p className="text-2xs font-semibold uppercase tracking-wider text-brand">Pipeline</p>
+          <h2 className="text-lg font-semibold text-text">My referrals</h2>
+        </div>
         <Select value={status} onValueChange={(v) => setStatus(v as ReferralStatus | "all")}>
           <SelectTrigger className="w-44 bg-surface text-sm" aria-label="Filter by status">
             <SelectValue />

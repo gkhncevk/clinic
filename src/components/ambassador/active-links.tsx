@@ -75,7 +75,10 @@ function LinkRow({ link }: { link: AmbassadorLink }) {
 export function ActiveLinks({ links }: { links: AmbassadorLink[] }) {
   return (
     <section className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold text-text">My links</h2>
+      <div>
+        <p className="text-2xs font-semibold uppercase tracking-wider text-brand">Share &amp; track</p>
+        <h2 className="text-lg font-semibold text-text">My links</h2>
+      </div>
       <div className="flex flex-col gap-3">
         {links.map((link) => (
           <LinkRow key={link.id} link={link} />

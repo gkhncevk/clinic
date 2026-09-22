@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Source_Serif_4 } from "next/font/google"
 import { ThemeProvider } from "@/components/theme/theme-provider"
+import { SiteFooter } from "@/components/nav/site-footer"
 import { TopNav } from "@/components/nav/top-nav"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import "./globals.css"
@@ -31,12 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${sourceSerif.variable} font-sans`}>
+      <body className={`${inter.variable} ${sourceSerif.variable} flex min-h-screen flex-col font-sans`}>
         <ThemeProvider>
           <TooltipProvider delayDuration={200}>
             <TopNav />
-            {children}
+            <div className="flex-1">{children}</div>
           </TooltipProvider>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

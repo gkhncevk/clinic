@@ -55,7 +55,10 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
 export function CampaignCards({ campaigns }: { campaigns: Campaign[] }) {
   return (
     <section className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold text-text">Campaigns</h2>
+      <div>
+        <p className="text-2xs font-semibold uppercase tracking-wider text-brand">Open now</p>
+        <h2 className="text-lg font-semibold text-text">Campaigns</h2>
+      </div>
       <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3">
         {campaigns.map((campaign) => (
           <CampaignCard key={campaign.id} campaign={campaign} />
