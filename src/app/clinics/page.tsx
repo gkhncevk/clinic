@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import { ClinicsExplorer } from "@/components/clinics/clinics-explorer"
-import { HeroCategoryCard } from "@/components/clinics/hero-category-card"
 import { TrustStats } from "@/components/clinics/trust-stats"
 import { getClinics } from "@/data/get-clinics"
 
@@ -33,7 +32,6 @@ export default async function ClinicsPage() {
             className="object-cover"
           />
           <div className="hero-photo-fade absolute inset-y-0 left-0 w-24" aria-hidden="true" />
-          <HeroCategoryCard clinics={clinics} />
         </div>
 
         {/* The text column reserves space matching the photo's own width
